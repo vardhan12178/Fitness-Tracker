@@ -1,0 +1,98 @@
+
+.planner {
+  background-color: #121212;
+  border: 1px solid #2c2c3e;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.planner h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: white;
+}
+
+.planner-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: calc(50% - 10px);
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input,
+.input-group select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #4caf50;
+  background-color: #3c3c3c;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #4caf50;
+}
+
+.add-activity-btn {
+  width: 100%;
+  max-width: 150px; 
+  padding: 10px;
+  background-color: #4caf50;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px auto 0; 
+}
+
+.add-activity-btn:hover {
+  background-color: #45a049;
+}
+
+
+@media (max-width: 768px) {
+  .input-group {
+    width: 100%; 
+  }
+
+  .planner-form {
+    gap: 10px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .planner {
+    padding: 15px;
+  }
+
+  .planner h2 {
+    font-size: 18px;
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  .add-activity-btn {
+    width: 100%;
+    max-width: 100%;
+    margin: 10px 0;
+  }
+}

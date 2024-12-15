@@ -1,0 +1,43 @@
+.weight-loss-plan {
+  background-color: #121212;
+    padding: 20px;
+    border-radius: 12px;
+    color: #ffffff;
+    margin: 10px 0;
+  }
+  
+  .weight-loss-plan h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #ffffff;
+  }
+  
+  .plan-details {
+    font-size: 16px;
+    color: #9c9c9c;
+  }
+  
+  .plan-details p {
+    margin: 5px 0;
+  }
+  
+  .weight-loss-plan p {
+    font-size: 14px;
+    color: #ff5722;
+    font-style: italic;
+  }
+  .weight-loss-plan .progress-bar {
+    width: 100%;
+    background-color: #3c3c3c;
+    height: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 5px;
+  }
+  
+  .weight-loss-plan .progress {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.3s ease;
+  }
+  

@@ -1,0 +1,34 @@
+.app-container {
+  display: flex; /* Flex layout for alignment */
+  height: 100vh; /* Full viewport height */
+  background-color: #1d1d1d; /* Background color */
+}
+
+.sidebar {
+  flex: 0 0 80px; /* Fixed width for the sidebar */
+  background-color: #1d1d1d; /* Sidebar background color */
+  height: 100%; /* Full height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.main-content {
+  flex: 1; /* Take remaining width */
+  display: flex;
+  flex-direction: column;
+  background-color: #282828; /* Dark gray background for content */
+  padding: 20px;
+  overflow-y: auto; /* Enable scrolling for overflowing content */
+}
+
+.dashboard {
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 20px; /* Spacing between columns */
+  margin-bottom: 20px;
+}

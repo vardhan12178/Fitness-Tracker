@@ -1,0 +1,87 @@
+
+.charts-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.chart-item {
+  position: relative;
+  width: 300px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.chart-item p {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+
+.physical-activity h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+
+.progress-text {
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+
+@media (max-width: 768px) {
+  .charts-container {
+    flex-direction: column; 
+    align-items: center;
+    gap: 15px;
+  }
+
+  .chart-item {
+    width: 250px;
+    max-width: 250px;
+  }
+
+  .physical-activity h2 {
+    font-size: 1.5rem; 
+  }
+
+  .progress-text {
+    font-size: 0.9rem; 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .charts-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .chart-item {
+    width: 200px;
+    max-width: 200px;
+  }
+
+  .physical-activity h2 {
+    font-size: 1.3rem; 
+  }
+
+  .progress-text {
+    font-size: 0.8rem; 
+  }
+
+  .chart-item p {
+    font-size: 0.85rem; 
+    margin-top: 5px;
+  }
+}

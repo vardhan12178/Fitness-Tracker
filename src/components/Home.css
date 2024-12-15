@@ -1,0 +1,96 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  
+
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #121212; 
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+ 
+  .row > * {
+    flex: 1;
+    background-color: #1c1c1c;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s;
+  }
+  
+  .row > *:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+    background-color: #222222; 
+  }
+  
+
+  .row .daily-insights {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    border: 1px solid #2b3945;
+  }
+  
+  .bottom-row > * {
+    flex: 1;
+    background-color: #1c1c1c;
+  }
+
+  .middle-row > * {
+    flex: 1;
+    background-color: #1c1c1c;
+  }
+  
+
+  @media (max-width: 1200px) {
+    .row {
+      flex-direction: column;
+    }
+  
+    .row > * {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  
+
+  .row > *:focus-within,
+  .row > *:active {
+    outline: 2px solid #3a82f6;
+    box-shadow: 0 0 12px rgba(58, 130, 246, 0.5); 
+  }
+  
+
+  .row > * {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

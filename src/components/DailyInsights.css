@@ -1,0 +1,56 @@
+
+.daily-insights {
+    background-color: #121212;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+  }
+  
+  .daily-insights h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #66bb6a; 
+  }
+  
+  .insight-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+  }
+  
+  .insight-item span {
+    font-size: 1.3rem;
+    margin-right: 10px;
+  }
+  
+  .balance {
+    font-weight: bold;
+  }
+  
+  .balance.positive {
+    color: #4caf50; 
+  }
+  
+  .balance.negative {
+    color: #ff5c5c;
+  }
+  
+  .warning {
+    color: #ff5c5c;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .success {
+    color: #4caf50;
+    text-align: center;
+    margin-top: 10px;
+  }
+  

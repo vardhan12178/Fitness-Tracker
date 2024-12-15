@@ -1,0 +1,35 @@
+.sleep-time {
+ background-color: #121212;
+  padding: 20px;
+  border-radius: 12px;
+  color: #ffffff;
+  margin: 10px 0;
+}
+
+.sleep-time h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.sleep-summary {
+  margin-bottom: 20px;
+}
+
+.sleep-summary p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.sleep-summary .goal-achieved {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.sleep-summary .goal-missed {
+  color: #ff5722;
+  font-weight: bold;
+}
+
+.sleep-chart {
+  margin-top: 20px;
+}

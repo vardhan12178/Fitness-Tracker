@@ -1,0 +1,29 @@
+.meal-planner {
+    padding: 20px;
+    color: white;
+    background: #222;
+    border-radius: 10px;
+  }
+  
+  .meal-input input {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .meal-list {
+    margin-top: 15px;
+    background: #1e1e1e;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 8px 12px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

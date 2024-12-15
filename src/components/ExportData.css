@@ -1,0 +1,19 @@
+.export-data {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .export-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .export-btn:hover {
+    background-color: #45a049;
+  }
+  

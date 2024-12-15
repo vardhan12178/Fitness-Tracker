@@ -1,0 +1,151 @@
+.nutrition {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .nutrition h2,
+  .nutrition h3 {
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .nutrition-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; 
+    justify-content: center; 
+  }
+  
+  .nutrition-form input {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    max-width: 150px;
+    box-sizing: border-box;
+  }
+  
+  .nutrition-form button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .nutrition-form button:hover {
+    background-color: #218838;
+  }
+  
+  .meal-list {
+    margin-bottom: 20px;
+  }
+  
+  .meal-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-bottom: 1px solid #444;
+    font-size: 14px;
+    flex-wrap: wrap;
+  }
+  
+  .meal-item span {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .calorie-summary {
+    text-align: center;
+  }
+  
+  .calorie-summary p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  .calorie-summary .calorie-balance {
+    font-weight: bold;
+  }
+  
+  .calorie-summary .calorie-balance.deficit {
+    color: #28a745;
+  }
+  
+  .calorie-summary .calorie-balance.surplus {
+    color: #dc3545; 
+  }
+  
+
+  @media (max-width: 768px) {
+    .nutrition {
+      padding: 15px;
+    }
+  
+    .nutrition-form {
+      gap: 8px;
+      justify-content: center;
+    }
+  
+    .nutrition-form input {
+      width: 100%; 
+      max-width: 200px;
+    }
+  
+    .meal-item {
+      font-size: 13px;
+      justify-content: space-between;
+      gap: 5px;
+    }
+  }
+  
+
+  @media (max-width: 480px) {
+    .nutrition {
+      padding: 10px;
+    }
+  
+    .nutrition h2,
+    .nutrition h3 {
+      font-size: 18px;
+    }
+  
+    .nutrition-form {
+      flex-direction: column; 
+      align-items: stretch;
+    }
+  
+    .nutrition-form input {
+      width: 100%; 
+      max-width: 100%;
+    }
+  
+    .nutrition-form button {
+      width: 100%; 
+    }
+  
+    .meal-item {
+      font-size: 12px;
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .meal-item span {
+      width: 100%;
+    }
+  
+    .calorie-summary p {
+      font-size: 14px;
+    }
+  }
+  
