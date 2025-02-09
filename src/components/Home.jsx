@@ -6,16 +6,17 @@ import WeightLossPlan from "./WeightLossPlan";
 import MyActivities from "./MyActivities";
 import GoalsSection from "./GoalsSection";
 import Planner from "./Planner";
-import DailyInsights from "./DailyInsights"; 
+import DailyInsights from "./DailyInsights";
 import { AppContext } from "../AppContext";
 import "./Home.css";
 
 const Home = ({ searchQuery }) => {
   const { selectedDay } = useContext(AppContext);
-  console.log(selectedDay)
+  console.log(selectedDay);
+
   return (
     <div className="dashboard">
-      {/* Top row */}
+      
       <div className="row top-row">
         <div className="physical-activity-container">
           <PhysicalActivity />
@@ -26,14 +27,13 @@ const Home = ({ searchQuery }) => {
         </div>
       </div>
 
-      {/* Middle row */}
+     
       <div className="row middle-row">
         <SleepTime />
         <WeightLossPlan />
         <MyActivities searchQuery={searchQuery} />
       </div>
 
-      {/* Bottom row */}
       <div className="row bottom-row">
         <Planner />
         <GoalsSection />

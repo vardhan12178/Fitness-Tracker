@@ -1,97 +1,117 @@
-/* Goals Section Container */
+
 .goals-section {
-  background-color: #121212; /* Dark background */
-  color: #ffffff; /* White text for contrast */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Heading Style */
-.goals-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-/* Goals Summary (When Goals Are Set) */
-.goals-summary {
-  text-align: center;
-  font-size: 1rem;
-}
-
-.goals-summary p {
-  margin: 10px 0;
-  line-height: 1.5;
-}
-
-.goals-summary button {
-  background-color: #ff5c5c; /* Reset button color */
+  background: rgba(20, 20, 20, 0.95);
+  padding: 35px;
+  border-radius: 15px;
   color: #ffffff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
+  width: 100%;
+  margin: 20px auto;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+  text-align: center;
 }
 
-.goals-summary button:hover {
-  background-color: #e64949; 
-}
 
+.goals-section h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #4caf50;
+  font-weight: bold;
+}
 
 .goals-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  align-items: center;
+  width: 100%;
 }
 
+
+.inline-fields {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  width: 98%;
+}
+
+.inline-fields input,
+.inline-fields select,
 .goals-form input {
- 
-  border: 1px solid #4caf50;
+  flex: 1;
+  border: 2px solid #4caf50;
   border-radius: 8px;
-  background-color: #3c3c3c;
+  background-color: #282828;
   color: #ffffff;
-  outline: none;
-  border-radius: 5px;
-  padding: 10px;
+  padding: 14px;
   font-size: 1rem;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.goals-form input:focus {
-  border-color: #66bb6a;
+  transition: all 0.3s ease;
   outline: none;
-  background-color: #1e2822; 
+  width: 95%;
+  min-width: 0;
 }
 
-.goals-form button {
-  background-color: #4caf50; 
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+
+.goals-form input:focus,
+.goals-form select:focus {
+  border-color: #66bb6a;
+  background-color: #1e2822;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+}
+
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+.set-btn,
+.reset-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  font-weight: bold;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  width: 100%;
 }
 
-.goals-form button:hover {
-  background-color: #66bb6a; 
+
+.set-btn {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+}
+
+.set-btn:hover {
+  background: linear-gradient(135deg, #45a049, #256b29);
+  transform: scale(1.03);
 }
 
 
-@media (max-width: 768px) {
-  .goals-section {
-    padding: 15px;
-  }
+.reset-btn {
+  background: linear-gradient(135deg, #ff5252, #e60000);
+  color: white;
+}
 
-  .goals-section h2 {
-    font-size: 1.5rem;
-  }
+.reset-btn:hover {
+  background: linear-gradient(135deg, #d32f2f, #b71c1c);
+  transform: scale(1.03);
+}
 
-  .goals-form input,
-  .goals-form button {
-    font-size: 0.9rem;
-  }
+.warning-text {
+  color: #ff5252;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+  text-align: center;
+  background: rgba(255, 82, 82, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
 }

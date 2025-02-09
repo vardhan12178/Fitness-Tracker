@@ -1,38 +1,57 @@
+
 .my-activities {
-  background-color: #121212;
-  padding: 20px;
+  background: rgba(28, 28, 28, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 5px;
   border-radius: 12px;
   color: #ffffff;
-  margin: 10px auto; 
+  margin: 10px auto;
   width: 100%;
-  max-width: 500px;
-  box-sizing: border-box; 
+  max-width: 900px;
+  min-height: 80%;
+  box-sizing: border-box;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
 }
+
 .my-activities h2 {
   font-size: 22px;
   margin-bottom: 15px;
-  color: #ffffff;
+  color: #4caf50;
+  
 }
 
-.selected-date,
-.select-date {
-  font-size: 16px;
-  margin-bottom: 15px;
-  color: #9c9c9c;
+
+.slick-slider {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
 }
 
-.activities-list {
+.slick-slide {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .activity-item {
-  background-color: #3c3c3c;
+  background: rgba(40, 40, 40, 0.9);
   padding: 15px;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 500px;
+  height:300px;
+  text-align: left;
+  margin: auto;
 }
+
 
 .activity-item h3 {
   font-size: 18px;
@@ -40,11 +59,31 @@
   margin-bottom: 10px;
 }
 
-.activity-item p {
+
+.activity-details {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px 20px;
+  align-items: center;
   font-size: 14px;
-  margin: 5px 0;
   color: #cccccc;
+  margin-top: 10px;
+  justify-content: space-between;
 }
+
+.activity-details p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.icon {
+  font-size: 16px;
+  color: #ffffff;
+}
+
 
 .no-activities {
   font-size: 16px;
@@ -54,68 +93,22 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .my-activities {
-    padding: 15px;
-    margin: 10px;
     max-width: 100%;
-  }
-
-  .my-activities h2 {
-    font-size: 20px;
-  }
-
-  .selected-date,
-  .select-date {
-    font-size: 14px;
+    padding: 15px;
   }
 
   .activity-item {
     padding: 12px;
   }
 
-  .activity-item h3 {
-    font-size: 16px;
+  .activity-details {
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
   }
 
-  .activity-item p {
-    font-size: 13px;
-  }
-}
-
-
-@media (max-width: 480px) {
-  .my-activities {
-    padding: 10px;
-    margin: 5px;
-    max-width: 100%;
-  }
-
-  .my-activities h2 {
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .selected-date,
-  .select-date {
-    font-size: 12px;
-    text-align: center;
-  }
-
-  .activity-item {
-    padding: 10px;
-    border-radius: 8px;
-  }
-
-  .activity-item h3 {
-    font-size: 14px;
-  }
-
-  .activity-item p {
-    font-size: 12px;
-  }
-
-  .no-activities {
+  .icon {
     font-size: 14px;
   }
 }

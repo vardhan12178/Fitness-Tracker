@@ -1,43 +1,154 @@
 .weight-loss-plan {
-  background-color: #121212;
-    padding: 20px;
-    border-radius: 12px;
-    color: #ffffff;
-    margin: 10px 0;
+  background: rgba(18, 18, 18, 0.95);
+  border: 1px solid #2c2c3e;
+  padding: 50px;  /* Increased padding */
+  border-radius: 12px;
+  color: #ffffff;
+  text-align: center;
+  max-width: 900px;  /* Increased width */
+  width: 95%;
+  min-height: 90%; /* Increased height */
+  margin: auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title */
+.weight-loss-plan h2 {
+  font-size: 34px;  /* Bigger font */
+  margin-bottom: 25px;
+  font-weight: bold;
+  color: #4caf50;
+}
+
+/* Plan Details */
+.plan-details {
+  font-size: 22px;  /* Increased font size */
+  color: #bdbdbd;
+  margin-bottom: 25px;
+  width: 100%;
+  text-align: center;
+}
+
+.plan-details p {
+  margin: 15px 0;
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 95%;
+  background: #2a2a2a;
+  height: 20px;  /* Increased height */
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 30px auto;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+  transition: width 0.4s ease-in-out;
+}
+
+/* Status Messages */
+.status-message {
+  font-size: 24px; /* Increased size */
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* ✅ Goal Achieved */
+.status-goal-achieved {
+  color: #4caf50;
+}
+
+/* ⚡ Making Progress */
+.status-on-track {
+  color: #ffeb3b;
+}
+
+/* 🔥 Almost There */
+.status-almost-there {
+  color: #ff9800;
+  animation: pulse 1s infinite alternate;
+}
+
+/* ❌ Needs Improvement */
+.status-off-track {
+  color: #ff5722;
+}
+
+/* Pulsing effect for "Almost There" */
+@keyframes pulse {
+  from {
+    transform: scale(1);
   }
-  
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .weight-loss-plan {
+    max-width: 800px;
+    min-height: 320px;
+    padding: 40px;
+  }
+
+  .weight-loss-plan h2 {
+    font-size: 30px;
+  }
+
+  .progress-bar {
+    height: 18px;
+  }
+
+  .status-message {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .weight-loss-plan {
+    max-width: 700px;
+    min-height: 300px;
+    padding: 35px;
+  }
+
+  .weight-loss-plan h2 {
+    font-size: 26px;
+  }
+
+  .progress-bar {
+    height: 16px;
+  }
+
+  .status-message {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .weight-loss-plan {
+    max-width: 95%;
+    min-height: 280px;
+    padding: 30px;
+  }
+
   .weight-loss-plan h2 {
     font-size: 22px;
-    margin-bottom: 15px;
-    color: #ffffff;
   }
-  
-  .plan-details {
-    font-size: 16px;
-    color: #9c9c9c;
+
+  .progress-bar {
+    height: 14px;
   }
-  
-  .plan-details p {
-    margin: 5px 0;
+
+  .status-message {
+    font-size: 18px;
   }
-  
-  .weight-loss-plan p {
-    font-size: 14px;
-    color: #ff5722;
-    font-style: italic;
-  }
-  .weight-loss-plan .progress-bar {
-    width: 100%;
-    background-color: #3c3c3c;
-    height: 8px;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-top: 5px;
-  }
-  
-  .weight-loss-plan .progress {
-    height: 100%;
-    background-color: #4caf50;
-    transition: width 0.3s ease;
-  }
-  
+}

@@ -1,98 +1,102 @@
 
 .planner {
-  background-color: #121212;
-  border: 1px solid #2c2c3e;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  background: rgba(28, 28, 28, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 12px;
   color: #ffffff;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 900px;
+  min-height: 90%;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
+
 
 .planner h2 {
   font-size: 22px;
   margin-bottom: 15px;
-  text-align: center;
-  color: white;
+  color: #4caf50;
+}
+
+
+.reminder {
+  font-size: 16px;
+  color: #ffcc00;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .planner-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 15px;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  width: calc(50% - 10px);
+  position: relative;
 }
 
+
 .input-group label {
-  margin-bottom: 5px;
   font-weight: bold;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  white-space: nowrap;
 }
+
+
+.icon {
+  color: #4caf50;
+  font-size: 16px;
+}
+
 
 .input-group input,
 .input-group select {
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
   border: 1px solid #4caf50;
   background-color: #3c3c3c;
   color: #ffffff;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  font-size: 14px;
 }
 
 .input-group input:focus,
 .input-group select:focus {
-  border-color: #4caf50;
+  border-color: #66bb6a;
+  background-color: #1e2822;
 }
 
 .add-activity-btn {
+  grid-column: span 2;
   width: 100%;
-  max-width: 150px; 
-  padding: 10px;
-  background-color: #4caf50;
-  color: #ffffff;
-  font-size: 16px;
+  padding: 12px;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 10px auto 0; 
+  font-size: 16px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 .add-activity-btn:hover {
-  background-color: #45a049;
+  background: linear-gradient(135deg, #45a049, #256b29);
 }
-
 
 @media (max-width: 768px) {
-  .input-group {
-    width: 100%; 
-  }
-
   .planner-form {
-    gap: 10px; 
-  }
-}
-
-@media (max-width: 480px) {
-  .planner {
-    padding: 15px;
-  }
-
-  .planner h2 {
-    font-size: 18px;
-  }
-
-  .input-group {
-    width: 100%;
-  }
-
-  .add-activity-btn {
-    width: 100%;
-    max-width: 100%;
-    margin: 10px 0;
+    grid-template-columns: 1fr;
   }
 }

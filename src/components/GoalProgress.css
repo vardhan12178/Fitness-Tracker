@@ -1,57 +1,104 @@
-.goals-progress {
-  background-color: #121212;
-    padding: 20px;
-    border-radius: 12px;
-    color: #ffffff;
-    margin: 10px 0;
+.goal-progress-container {
+  background: rgba(28, 28, 28, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 12px;
+  color: #ffffff;
+  margin: 30px auto;
+  width: 100%;
+  max-width: 650px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.goal-progress-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.progress-item h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #4caf50;
+}
+
+.progress-bar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  height: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-item p {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #cccccc;
+}
+
+.goal-achieved {
+  color: #4caf50;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.goal-missed {
+  color: #ff5722;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.no-milestones {
+  font-size: 16px;
+  color: #ff9800;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .goal-progress-container {
+    max-width: 100%;
+    padding: 25px;
   }
-  
-  .goals-progress h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    color: #ffffff;
+
+  .goal-progress-container h2 {
+    font-size: 20px;
   }
-  
-  .progress-item {
-    margin-bottom: 20px;
-  }
-  
-  .progress-item h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #4caf50;
-  }
-  
+
   .progress-bar {
-    width: 100%;
-    background-color: #3c3c3c;
     height: 12px;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 5px;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .goal-progress-container {
+    max-width: 100%;
+    padding: 20px;
+  }
+
   .progress {
-    height: 100%;
-    background-color: #4caf50;
-    transition: width 0.3s ease;
+    font-size: 10px;
   }
-  
-  .progress-item p {
-    font-size: 14px;
-    margin: 5px 0;
-    color: #cccccc;
-  }
-  
-  .goal-achieved {
-    color: #4caf50;
-    font-weight: bold;
-    margin-left: 10px;
-  }
-  
-  .goal-missed {
-    color: #ff5722;
-    font-weight: bold;
-    margin-left: 10px;
-  }
-  
+}

@@ -6,15 +6,18 @@ import "./GoalProgress.css";
 const GoalProgress = () => {
   const { plannedActivities, selectedDay, goals } = useContext(AppContext);
 
+  const dailyStepsGoal = goals?.dailySteps || 10000;
+  const dailyCaloriesGoal = goals?.dailyCalories || 500;
+
   const activitiesForDay = plannedActivities.filter(
     (activity) => new Date(activity.date).getDate() === selectedDay
   );
 
-  const totalSteps = activitiesForDay.reduce((acc, activity) => acc + activity.steps, 0);
-  const totalCalories = activitiesForDay.reduce((acc, activity) => acc + activity.calories, 0);
+  const totalSteps = activitiesForDay.reduce((acc, activity) => acc + (activity.steps || 0), 0);
+  const totalCalories = activitiesForDay.reduce((acc, activity) => acc + (activity.calories || 0), 0);
 
-  const stepsProgress = Math.min((totalSteps / goals.dailySteps) * 100, 100);
-  const caloriesProgress = Math.min((totalCalories / goals.dailyCalories) * 100, 100);
+  const stepsProgress = Math.min((totalSteps / dailyStepsGoal) * 100, 100);
+  const caloriesProgress = Math.min((totalCalories / dailyCaloriesGoal) * 100, 100);
 
   const milestones = [];
   if (totalSteps >= 10000) {
@@ -25,36 +28,45 @@ const GoalProgress = () => {
   }
 
   return (
-    <div className="goals-progress">
+    <div className="goal-progress-container">
       <h2>Daily Goals Progress</h2>
-      <div className="progress-item">
-        <h3>Steps</h3>
-        <div className="progress-bar">
-          <div className="progress" style={{ width: `${stepsProgress}%` }}></div>
+
+      <div className="progress-section">
+        <div className="progress-item">
+          <h3>Steps</h3>
+          <div className="progress-bar">
+            <div className="progress" style={{ width: `${stepsProgress}%` }}>
+              {Math.round(stepsProgress)}%
+            </div>
+          </div>
+          <p>
+            {totalSteps.toLocaleString()} / {dailyStepsGoal.toLocaleString()} steps
+            <span className={totalSteps >= dailyStepsGoal ? "goal-achieved" : "goal-missed"}>
+              {totalSteps >= dailyStepsGoal ? "🎯 Goal Achieved!" : "🚀 Keep Going!"}
+            </span>
+          </p>
         </div>
-        <p>
-          {totalSteps} / {goals.dailySteps} steps
-          <span className={totalSteps >= goals.dailySteps ? "goal-achieved" : "goal-missed"}>
-            {totalSteps >= goals.dailySteps ? "Goal Achieved!" : "Keep Going!"}
-          </span>
-        </p>
-      </div>
-      <div className="progress-item">
-        <h3>Calories Burned</h3>
-        <div className="progress-bar">
-          <div className="progress" style={{ width: `${caloriesProgress}%` }}></div>
+
+        <div className="progress-item">
+          <h3>Calories Burned</h3>
+          <div className="progress-bar">
+            <div className="progress" style={{ width: `${caloriesProgress}%` }}>
+              {Math.round(caloriesProgress)}%
+            </div>
+          </div>
+          <p>
+            {totalCalories.toLocaleString()} / {dailyCaloriesGoal.toLocaleString()} kcal
+            <span className={totalCalories >= dailyCaloriesGoal ? "goal-achieved" : "goal-missed"}>
+              {totalCalories >= dailyCaloriesGoal ? "🔥 Goal Achieved!" : "💪 Keep Pushing!"}
+            </span>
+          </p>
         </div>
-        <p>
-          {totalCalories} / {goals.dailyCalories} kcal
-          <span className={totalCalories >= goals.dailyCalories ? "goal-achieved" : "goal-missed"}>
-            {totalCalories >= goals.dailyCalories ? "Goal Achieved!" : "Keep Going!"}
-          </span>
-        </p>
       </div>
+
       {milestones.length > 0 ? (
         <Badges milestones={milestones} />
       ) : (
-        <p className="no-milestones">No milestones achieved yet. Keep going!</p>
+        <p className="no-milestones">No milestones achieved yet. Keep going! 🚀</p>
       )}
     </div>
   );

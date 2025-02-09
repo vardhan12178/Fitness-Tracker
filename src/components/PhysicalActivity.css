@@ -4,28 +4,32 @@
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 20px;
+  margin-top: 90px;
 }
+
 
 .chart-item {
   position: relative;
-  width: 300px;
-  max-width: 300px;
+  width: 320px;
+  max-width: 320px;
   margin: 0 auto;
 }
 
-.chart-item p {
-  margin-top: 15px;
-  text-align: center;
+
+.goal-achieved {
   font-size: 1rem;
-  color: #ffffff;
+  color: #ffd700;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 8px;
 }
 
 
 .physical-activity h2 {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: #4caf50;
 }
 
 
@@ -37,28 +41,34 @@
   margin-top: 10px;
 }
 
+.no-activity {
+  font-size: 0.9rem;
+  color: #ff9800;
+  text-align: center;
+  font-style: italic;
+  margin-top: 5px;
+}
 
 @media (max-width: 768px) {
   .charts-container {
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     gap: 15px;
   }
 
   .chart-item {
-    width: 250px;
-    max-width: 250px;
+    width: 280px;
+    max-width: 280px;
   }
 
   .physical-activity h2 {
-    font-size: 1.5rem; 
+    font-size: 1.7rem;
   }
 
   .progress-text {
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
   }
 }
-
 
 @media (max-width: 480px) {
   .charts-container {
@@ -68,20 +78,19 @@
   }
 
   .chart-item {
-    width: 200px;
-    max-width: 200px;
+    width: 220px;
+    max-width: 220px;
   }
 
   .physical-activity h2 {
-    font-size: 1.3rem; 
+    font-size: 1.5rem;
   }
 
   .progress-text {
-    font-size: 0.8rem; 
+    font-size: 0.8rem;
   }
 
-  .chart-item p {
-    font-size: 0.85rem; 
-    margin-top: 5px;
+  .no-activity {
+    font-size: 0.8rem;
   }
 }

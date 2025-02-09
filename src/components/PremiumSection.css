@@ -1,57 +1,155 @@
+/* Modal Background */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.7); /* Darker background */
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
 }
 
+/* Modal Content */
 .modal-content {
-  background-color: #ffffff;
-  padding: 20px;
+  background: #1b1b1b; /* Dark gray-black background */
+  padding: 25px;
   border-radius: 12px;
-  width: 400px;
+  width: 420px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+  animation: scaleUp 0.3s forwards;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Light subtle border */
 }
 
+/* Close Icon */
+.close-icon {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-icon:hover {
+  color: #ff4d4d;
+}
+
+/* Modal Header */
 .modal-content h2 {
   font-size: 24px;
-  margin-bottom: 15px;
-  color: #333333;
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-weight: bold;
 }
 
+/* Description Text */
 .modal-content p {
   font-size: 16px;
   margin-bottom: 20px;
-  color: #555555;
+  color: #cccccc;
 }
 
-.modal-content ul {
+/* Plan Selection */
+.plans {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.plan-btn {
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 0 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.plan-btn:hover {
+  background: rgba(76, 175, 80, 0.3);
+}
+
+.plan-btn.selected {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Plan Details */
+.plan-details ul {
   text-align: left;
   margin-bottom: 20px;
   padding-left: 20px;
-  color: #333333;
+  color: #ffffff;
 }
 
-.modal-content li {
+.plan-details li {
   margin-bottom: 10px;
+  font-size: 15px;
 }
 
-.close-btn {
-  padding: 10px 20px;
-  background-color: #4caf50;
+.plan-details li i {
+  margin-right: 5px;
+}
+
+/* Upgrade Button */
+.upgrade-btn {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
   color: #ffffff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
 }
 
-.close-btn:hover {
-  background-color: #45a049;
+.upgrade-btn:hover {
+  background: linear-gradient(135deg, #45a049, #256b29);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); }
+  to { transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .plan-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .upgrade-btn {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
 }

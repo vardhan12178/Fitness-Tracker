@@ -1,35 +1,90 @@
 .sleep-time {
- background-color: #121212;
-  padding: 20px;
+  background: rgba(28, 28, 28, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 25px;
   border-radius: 12px;
   color: #ffffff;
   margin: 10px 0;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .sleep-time h2 {
   font-size: 22px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  color: #4caf50;
+  font-weight: bold;
 }
 
 .sleep-summary {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
   margin-bottom: 20px;
 }
 
 .sleep-summary p {
   font-size: 16px;
-  margin: 5px 0;
+  margin: 8px 0;
+  color: #ccc;
 }
 
-.sleep-summary .goal-achieved {
+.weekly-summary {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffa726;
+}
+
+.goal-achieved {
   color: #4caf50;
   font-weight: bold;
 }
 
-.sleep-summary .goal-missed {
+.goal-missed {
   color: #ff5722;
   font-weight: bold;
 }
 
 .sleep-chart {
-  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .sleep-time {
+    padding: 20px;
+  }
+
+  .sleep-time h2 {
+    font-size: 20px;
+  }
+
+  .sleep-summary,
+  .weekly-summary {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sleep-time {
+    padding: 15px;
+  }
+
+  .sleep-time h2 {
+    font-size: 18px;
+  }
+
+  .sleep-summary p {
+    font-size: 14px;
+  }
+
+  .weekly-summary {
+    font-size: 14px;
+  }
 }

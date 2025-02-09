@@ -9,21 +9,21 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const centerTextPlugin = {
   id: "centerText",
   beforeDraw(chart) {
-    const { width } = chart;
-    const { height } = chart;
+    const { width, height } = chart;
     const ctx = chart.ctx;
     const type = chart.canvas.id;
 
     ctx.restore();
 
-
     const fontSize = (height / 20).toFixed(2);
     ctx.font = `bold ${fontSize}px Arial`;
     ctx.textBaseline = "middle";
-    ctx.fillStyle = "#ffffff"; 
+    ctx.fillStyle = "#ffffff";
 
     const text =
-      type === "stepsChart" ? `${chart.data.datasets[0].data[0]} Steps` : `${chart.data.datasets[0].data[0]} Calories`;
+      type === "stepsChart"
+        ? `${chart.data.datasets[0].data[0]} Steps`
+        : `${chart.data.datasets[0].data[0]} Calories`;
     const textX = Math.round((width - ctx.measureText(text).width) / 2);
     const textY = height / 2;
     ctx.fillText(text, textX, textY);
@@ -35,16 +35,18 @@ const centerTextPlugin = {
 const PhysicalActivity = () => {
   const { plannedActivities, selectedDay, goals } = useContext(AppContext);
 
+  const dailyStepsGoal = goals?.dailySteps || 10000;
+  const dailyCaloriesGoal = goals?.dailyCalories || 500;
+
   const activitiesForDay = plannedActivities.filter(
     (activity) => new Date(activity.date).getDate() === selectedDay
   );
 
+  const totalSteps = activitiesForDay.reduce((acc, activity) => acc + (activity.steps || 0), 0);
+  const totalCalories = activitiesForDay.reduce((acc, activity) => acc + (activity.calories || 0), 0);
 
-  const totalSteps = activitiesForDay.reduce((acc, activity) => acc + activity.steps, 0);
-  const totalCalories = activitiesForDay.reduce((acc, activity) => acc + activity.calories, 0);
-
-  const remainingSteps = Math.max(goals.dailySteps - totalSteps, 0);
-  const remainingCalories = Math.max(goals.dailyCalories - totalCalories, 0);
+  const remainingSteps = Math.max(dailyStepsGoal - totalSteps, 0);
+  const remainingCalories = Math.max(dailyCaloriesGoal - totalCalories, 0);
 
   const stepsData = {
     labels: ["Achieved", "Remaining"],
@@ -56,7 +58,6 @@ const PhysicalActivity = () => {
       },
     ],
   };
-
 
   const caloriesData = {
     labels: ["Achieved", "Remaining"],
@@ -86,16 +87,18 @@ const PhysicalActivity = () => {
                   position: "top",
                   labels: {
                     color: "#ffffff",
-                    font: {
-                      size: 12,
-                    },
+                    font: { size: 12 },
                   },
                 },
               },
             }}
           />
-          <p className="progress-text">{`${totalSteps} / ${goals.dailySteps} steps`}</p>
+          <p className="progress-text">
+            {totalSteps.toLocaleString()} / {dailyStepsGoal.toLocaleString()} steps
+          </p>
+          {totalSteps === 0 && <p className="no-activity">No steps logged yet 🚶</p>}
         </div>
+
         <div className="chart-item">
           <Doughnut
             id="caloriesChart"
@@ -109,15 +112,16 @@ const PhysicalActivity = () => {
                   position: "top",
                   labels: {
                     color: "#ffffff",
-                    font: {
-                      size: 12,
-                    },
+                    font: { size: 12 },
                   },
                 },
               },
             }}
           />
-          <p className="progress-text">{`${totalCalories} / ${goals.dailyCalories} kcal`}</p>
+          <p className="progress-text">
+            {totalCalories.toLocaleString()} / {dailyCaloriesGoal.toLocaleString()} kcal
+          </p>
+          {totalCalories === 0 && <p className="no-activity">No calories burned yet 🔥</p>}
         </div>
       </div>
     </div>
