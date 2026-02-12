@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FitTrack
+
+FitTrack is a modern fitness tracking web app built with Next.js and Firebase.
+
+It helps users set goals, log daily progress (meals, workouts, sleep, and steps), and view insights from a single dashboard.
+
+## Features
+
+- Google Sign-In with Firebase Authentication
+- Firestore-backed persistence (no localStorage data lock-in)
+- Daily Check-In flow for easier logging
+- Dashboard insights with status, streak, and trends
+- Meal, sleep, workout, and steps tracking
+- Reset Data flow to clear all user records safely
+
+## Tech Stack
+
+- Next.js 15 (App Router)
+- React 19 + TypeScript
+- Firebase Auth + Firestore
+- Recharts for analytics visualizations
+- Tailwind CSS
+
+## Project Structure
+
+```text
+src/
+	app/
+		components/
+		dashboard/
+		goal-setup/
+		login/
+		signup/
+	lib/
+		auth.ts
+		firebase.ts
+		firestore.ts
+context/
+	GoalContext.tsx
+	UserContext.tsx
+utils/
+	calculateMetrics.ts
+```
 
 ## Getting Started
 
-First, run the development server:
+### 1) Install dependencies
+
+```bash
+npm install
+```
+
+### 2) Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3) Production build check
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Firebase Setup (Required)
 
-To learn more about Next.js, take a look at the following resources:
+Follow the full setup guide in [FIREBASE_SETUP.md](FIREBASE_SETUP.md).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Minimum required before using the app:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Enable Google provider in Firebase Authentication
+2. Enable Firestore Database
+3. Add Firestore security rules (user can only access own data)
+4. Add your deployed domain to Firebase Authorized Domains
 
-## Deploy on Vercel
+## Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Currently, Firebase web config is set in [src/lib/firebase.ts](src/lib/firebase.ts).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- There are no `.env` files required to run this repo in its current state.
+- If you want cleaner environment management, you can migrate Firebase config to `NEXT_PUBLIC_*` variables later.
+
+## Deployment
+
+This project is configured for Vercel.
+
+- Build command: `npm run build`
+- Output: `.next`
+- Vercel config file: [vercel.json](vercel.json)
+
+## Scripts
+
+- `npm run dev` — start development server
+- `npm run build` — create production build
+- `npm run start` — run production server
+- `npm run lint` — run lint checks
+
+## Notes
+
+- Firestore collections are created automatically on first write.
+- Keep Firestore security rules strict in production.
+- If login fails with `auth/operation-not-allowed`, enable Google sign-in in Firebase Console.
