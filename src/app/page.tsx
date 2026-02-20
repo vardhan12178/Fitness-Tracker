@@ -54,7 +54,7 @@ export default function Home() {
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 glass-panel !rounded-full !shadow-xl">
         <div className="px-6 h-16 flex justify-between items-center">
           <Link href="/" className="text-xl font-bold tracking-tight flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-sunset flex items-center justify-center shadow-lg shadow-orange-500/30">
+            <div className="w-8 h-8 rounded-full bg-gradient-sunset flex items-center justify-center shadow-md shadow-orange-500/20">
               <Activity className="w-4 h-4 text-white" />
             </div>
             <span className="text-white">FitTrack</span>
@@ -68,7 +68,7 @@ export default function Home() {
             </Link>
             <Link
               href="/login"
-              className="px-5 py-2.5 text-sm text-white bg-gradient-sunset hover:bg-gradient-sunset-hover rounded-full font-semibold transition-all shadow-lg shadow-orange-500/40 hover:shadow-xl shadow-orange-500/60 hover:scale-105"
+              className="px-5 py-2.5 text-sm text-white bg-gradient-sunset hover:bg-gradient-sunset-hover rounded-full font-semibold transition-all shadow-md shadow-orange-500/20 hover:shadow-lg hover:shadow-orange-500/40 hover:scale-105"
             >
               Get Started Free
             </Link>
@@ -77,37 +77,39 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative z-10 pt-48 pb-32 px-6 flex flex-col items-center justify-center min-h-screen text-center">
-        <div className="max-w-4xl mx-auto flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white/80 text-xs font-semibold uppercase tracking-widest mb-8">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-            </span>
-            FitTrack 2.0 is Live
-          </div>
-
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold leading-[1] tracking-tighter mb-8 drop-shadow-2xl">
-            Track <span className="text-gradient font-black">everything.</span> <br />
-            Sacrifice <span className="text-white/40 italic font-light">nothing.</span>
-          </h1>
-
-          <p className="max-w-2xl text-lg md:text-xl text-white/60 leading-relaxed mb-12 font-medium">
-            The ultimate health command center. Monitor workouts, nutrition, and sleep through an interface designed out of pure stardust.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
-            <Link
-              href="/login"
-              className="relative flex items-center justify-center gap-2 px-8 py-4 bg-white text-black rounded-xl font-bold text-lg transition-all hover:scale-105 active:scale-95"
-            >
-              Start tracking
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-[90vh] text-center px-4 max-w-5xl mx-auto pt-20">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
+          <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+          <span className="text-xs font-medium text-white/70 uppercase tracking-widest">FitTrack 2.0 is live</span>
         </div>
-      </section>
+
+        <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-4">
+          Track <br className="md:hidden" />
+          <span className="text-gradient relative inline-block">
+            everything.
+            <div className="absolute -inset-2 bg-gradient-to-r from-orange-400 via-rose-500 to-purple-600 opacity-20 blur-3xl -z-10" />
+          </span>
+        </h1>
+        <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-8">
+          Sacrifice <span className="font-serif italic text-white/50 font-normal">nothing.</span>
+        </h2>
+
+        <p className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-12 font-medium">
+          The ultimate health command center. Monitor workouts, nutrition, and sleep through an interface designed out of pure stardust.
+        </p>
+
+        <Link
+          href="/signup"
+          className="relative group inline-flex mt-4"
+        >
+          <div className="absolute -inset-1 bg-gradient-to-r from-orange-400 via-rose-500 to-purple-600 rounded-2xl blur-lg opacity-40 group-hover:opacity-70 transition duration-500" />
+          <div className="relative px-8 py-4 bg-white text-black rounded-2xl font-bold text-lg shadow-xl shadow-black/50 flex items-center gap-2 group-hover:scale-[1.02] transition-all duration-300">
+            Start tracking
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </div>
+        </Link>
+      </div>
+
 
       {/* Features */}
       <section className="relative z-10 py-32 px-6">
