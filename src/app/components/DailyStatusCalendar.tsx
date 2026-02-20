@@ -64,7 +64,7 @@ export default function DailyStatusCalendar() {
   const getStatusColor = (date: string) => {
     const entry = data.find((e) => e.date === date);
     if (!entry || (entry.calories === 0 && entry.protein === 0 && entry.sleep === 0)) {
-      return 'bg-gray-800';
+      return 'bg-white\/5';
     }
 
     const { calories, protein, sleep } = entry;
@@ -106,7 +106,7 @@ export default function DailyStatusCalendar() {
         })}
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-4 justify-center text-xs text-gray-400">
+      <div className="mt-4 flex flex-wrap gap-4 justify-center text-xs text-muted">
         <span className="flex items-center gap-1.5">
           <span className="w-3 h-3 bg-green-600 rounded" />
           All Goals Met
@@ -120,7 +120,7 @@ export default function DailyStatusCalendar() {
           Off Track
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-3 h-3 bg-gray-800 rounded" />
+          <span className="w-3 h-3 bg-white\/5 rounded" />
           No Data
         </span>
       </div>

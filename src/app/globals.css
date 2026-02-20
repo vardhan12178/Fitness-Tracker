@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030712;
-  --foreground: #f9fafb;
-  --card: #111827;
-  --card-hover: #1f2937;
-  --border: #1f2937;
+  --background: #020617;
+  --foreground: #f8fafc;
+  --card: rgba(15, 15, 20, 0.7);
+  --card-hover: rgba(25, 25, 30, 0.8);
+  --border: rgba(255, 255, 255, 0.12);
   --accent: #f97316;
-  --accent-hover: #ea580c;
-  --success: #22c55e;
-  --warning: #eab308;
+  --accent-hover: #f43f5e;
+  --success: #10b981;
+  --warning: #f59e0b;
   --danger: #ef4444;
-  --muted: #6b7280;
+  --muted: #94a3b8;
 }
 
 @theme inline {
@@ -28,9 +28,36 @@
   --color-muted: var(--muted);
 }
 
+@layer utilities {
+  .glass-panel {
+    @apply bg-card backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/30 rounded-3xl relative overflow-hidden;
+  }
+
+  .glass-panel::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/[0.04] to-transparent pointer-events-none;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-rose-500 to-purple-600;
+  }
+
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-500;
+  }
+
+  .bg-gradient-sunset {
+    @apply bg-gradient-to-r from-orange-500 to-rose-600;
+  }
+
+  .bg-gradient-sunset-hover {
+    @apply bg-gradient-to-r from-orange-400 to-rose-500;
+  }
+}
+
 * {
   scrollbar-width: thin;
-  scrollbar-color: #374151 transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
 body {
@@ -41,28 +68,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth transitions */
-a, button, input, select {
-  transition: all 0.15s ease;
+a,
+button,
+input,
+select {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Focus ring */
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.4);
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.5);
 }
 
-/* Custom scrollbar for Webkit */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #374151;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #4b5563;
+  background: rgba(255, 255, 255, 0.2);
 }

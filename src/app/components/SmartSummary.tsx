@@ -76,7 +76,7 @@ export default function SmartSummary() {
   if (!hasData) {
     return (
       <Card>
-        <div className="flex items-center gap-3 text-gray-400">
+        <div className="flex items-center gap-3 text-muted">
           <BarChart3 className="w-5 h-5" />
           <p className="text-sm">Start logging meals and sleep to see your weekly summary.</p>
         </div>
@@ -92,25 +92,25 @@ export default function SmartSummary() {
   return (
     <Card>
       <h2 className="text-lg font-semibold flex items-center gap-2 mb-4">
-        <BarChart3 className="w-5 h-5 text-orange-500" />
+        <BarChart3 className="w-5 h-5 text-accent" />
         7-Day Summary
       </h2>
 
       <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="bg-[#030712] rounded-lg p-3 text-center">
-          <p className="text-xs text-gray-500">Avg Calories</p>
+        <div className="bg-black/40 backdrop-blur-sm shadow-inner rounded-lg p-3 text-center">
+          <p className="text-xs text-muted/70">Avg Calories</p>
           <p className="text-lg font-bold">{avgCalories}</p>
           {hasGoal && <p className="text-xs text-gray-600">/ {needs.dailyCalories} kcal</p>}
           {daysWithMealData > 0 && <p className="text-[10px] text-gray-600 mt-0.5">{daysWithMealData}d data</p>}
         </div>
-        <div className="bg-[#030712] rounded-lg p-3 text-center">
-          <p className="text-xs text-gray-500">Avg Protein</p>
-          <p className="text-lg font-bold">{avgProtein}<span className="text-xs text-gray-500 font-normal">g</span></p>
+        <div className="bg-black/40 backdrop-blur-sm shadow-inner rounded-lg p-3 text-center">
+          <p className="text-xs text-muted/70">Avg Protein</p>
+          <p className="text-lg font-bold">{avgProtein}<span className="text-xs text-muted/70 font-normal">g</span></p>
           {hasGoal && <p className="text-xs text-gray-600">/ {needs.proteinGrams}g</p>}
         </div>
-        <div className="bg-[#030712] rounded-lg p-3 text-center">
-          <p className="text-xs text-gray-500">Avg Sleep</p>
-          <p className="text-lg font-bold">{avgSleep}<span className="text-xs text-gray-500 font-normal"> hrs</span></p>
+        <div className="bg-black/40 backdrop-blur-sm shadow-inner rounded-lg p-3 text-center">
+          <p className="text-xs text-muted/70">Avg Sleep</p>
+          <p className="text-lg font-bold">{avgSleep}<span className="text-xs text-muted/70 font-normal"> hrs</span></p>
           {daysWithSleepData > 0 && <p className="text-[10px] text-gray-600 mt-0.5">{daysWithSleepData}d data</p>}
         </div>
       </div>

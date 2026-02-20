@@ -20,16 +20,16 @@ export default function ConfirmResetModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black/60" onClick={onCancel} />
-      <div className="relative w-full max-w-md mx-4 bg-[#111827] border border-gray-800 rounded-2xl p-6 shadow-xl">
+      <div className="relative w-full max-w-md mx-4 bg-card border border-white/5 rounded-2xl p-6 shadow-xl">
         <h3 className="text-lg font-semibold text-white">Reset all fitness data?</h3>
-        <p className="text-sm text-gray-400 mt-2">
+        <p className="text-sm text-muted mt-2">
           This will delete your goals, meals, workouts, sleep logs, and steps. This action cannot be undone.
         </p>
         <div className="mt-6 flex items-center justify-end gap-3">
           <button
             onClick={onCancel}
             disabled={isBusy}
-            className="px-4 py-2 text-sm text-gray-300 hover:text-white rounded-lg border border-gray-700 hover:border-gray-500 transition disabled:opacity-50"
+            className="px-4 py-2 text-sm text-gray-300 hover:text-white rounded-lg border border-white/10 hover:border-gray-500 transition disabled:opacity-50"
           >
             Cancel
           </button>

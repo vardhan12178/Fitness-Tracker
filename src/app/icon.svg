@@ -1,11 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#fb923c"/>
-      <stop offset="100%" stop-color="#f97316"/>
+    <linearGradient id="sunsetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="60%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#9333ea"/>
     </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f18"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="64" height="64" rx="14" fill="#030712"/>
-  <circle cx="32" cy="32" r="21" fill="none" stroke="url(#g)" stroke-width="5"/>
-  <path d="M22 22h20v7H30v7h10v7H30v11h-8z" fill="url(#g)"/>
+
+  <!-- Background rounded square -->
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)"/>
+
+  <!-- Subtle border glow -->
+  <rect width="64" height="64" rx="16" fill="none" stroke="url(#sunsetGrad)" stroke-width="1" opacity="0.4"/>
+
+  <!-- Dumbbell bar -->
+  <rect x="20" y="30" width="24" height="4" rx="2" fill="url(#sunsetGrad)" filter="url(#glow)"/>
+
+  <!-- Left weight plate outer -->
+  <rect x="12" y="24" width="8" height="16" rx="3" fill="url(#sunsetGrad)" filter="url(#glow)"/>
+  <!-- Left weight plate inner (cutout effect) -->
+  <rect x="14" y="27" width="4" height="10" rx="1.5" fill="#020617" opacity="0.5"/>
+
+  <!-- Right weight plate outer -->
+  <rect x="44" y="24" width="8" height="16" rx="3" fill="url(#sunsetGrad)" filter="url(#glow)"/>
+  <!-- Right weight plate inner (cutout effect) -->
+  <rect x="46" y="27" width="4" height="10" rx="1.5" fill="#020617" opacity="0.5"/>
+
+  <!-- Tiny flame accent on top center -->
+  <path d="M32 14 C30 17 27 18.5 28 21 C29 23.5 31 22 31 24 C33 22 35 20 34 17.5 C33 15 32 14 32 14Z"
+        fill="url(#sunsetGrad)" filter="url(#glow)" opacity="0.9"/>
 </svg>

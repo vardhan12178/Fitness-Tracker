@@ -128,24 +128,24 @@ export default function MealTracker() {
         <div className="space-y-3 mb-4">
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-gray-400">Calories</span>
-              <span className={overCalories ? 'text-red-400' : 'text-gray-500'}>
+              <span className="text-muted">Calories</span>
+              <span className={overCalories ? 'text-red-400' : 'text-muted/70'}>
                 {todayTotal.calories} / {needs.dailyCalories} kcal
               </span>
             </div>
-            <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-white\/5 rounded-full overflow-hidden">
               <div
-                className={`h-full rounded-full transition-all duration-500 ${overCalories ? 'bg-red-500' : 'bg-orange-500'}`}
+                className={`h-full rounded-full transition-all duration-500 ${overCalories ? 'bg-red-500' : 'bg-accent'}`}
                 style={{ width: `${calPercent}%` }}
               />
             </div>
           </div>
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-gray-400">Protein</span>
-              <span className="text-gray-500">{todayTotal.protein} / {needs.proteinGrams}g</span>
+              <span className="text-muted">Protein</span>
+              <span className="text-muted/70">{todayTotal.protein} / {needs.proteinGrams}g</span>
             </div>
-            <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-white\/5 rounded-full overflow-hidden">
               <div
                 className="h-full bg-green-500 rounded-full transition-all duration-500"
                 style={{ width: `${protPercent}%` }}
@@ -156,19 +156,19 @@ export default function MealTracker() {
       )}
 
       {showForm && (
-        <form onSubmit={handleAddMeal} className="space-y-3 mb-4 pb-4 border-b border-gray-800">
+        <form onSubmit={handleAddMeal} className="space-y-3 mb-4 pb-4 border-b border-white/5">
           <input
             type="text"
             placeholder="Meal name (e.g., Chicken breast)"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm"
+            className="w-full px-4 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm"
             required
           />
           <div className="grid grid-cols-3 gap-3">
-            <input type="number" placeholder="Calories" value={calories} onChange={(e) => setCalories(e.target.value)} className="px-3 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm" required min="1" />
-            <input type="number" placeholder="Protein (g)" value={protein} onChange={(e) => setProtein(e.target.value)} className="px-3 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm" required min="0" />
-            <input type="number" placeholder="Fiber (g)" value={fiber} onChange={(e) => setFiber(e.target.value)} className="px-3 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm" required min="0" />
+            <input type="number" placeholder="Calories" value={calories} onChange={(e) => setCalories(e.target.value)} className="px-3 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm" required min="1" />
+            <input type="number" placeholder="Protein (g)" value={protein} onChange={(e) => setProtein(e.target.value)} className="px-3 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm" required min="0" />
+            <input type="number" placeholder="Fiber (g)" value={fiber} onChange={(e) => setFiber(e.target.value)} className="px-3 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm" required min="0" />
           </div>
           <button className="w-full bg-green-600 hover:bg-green-700 text-white py-2.5 rounded-lg font-medium text-sm transition">
             Log Meal
@@ -178,14 +178,14 @@ export default function MealTracker() {
 
       {/* Meal list */}
       {todayMeals.length === 0 ? (
-        <p className="text-gray-500 text-sm text-center py-4">No meals logged today.</p>
+        <p className="text-muted/70 text-sm text-center py-4">No meals logged today.</p>
       ) : (
         <div className="space-y-2 max-h-56 overflow-y-auto">
           {todayMeals.map((m) => (
-            <div key={m.id} className="flex items-center justify-between px-4 py-3 bg-[#030712] rounded-lg group">
+            <div key={m.id} className="flex items-center justify-between px-4 py-3 bg-black/40 backdrop-blur-sm shadow-inner rounded-lg group">
               <div>
                 <p className="text-sm font-medium">{m.name}</p>
-                <p className="text-xs text-gray-500">{m.calories} kcal &middot; {m.protein}g protein &middot; {m.fiber}g fiber</p>
+                <p className="text-xs text-muted/70">{m.calories} kcal &middot; {m.protein}g protein &middot; {m.fiber}g fiber</p>
               </div>
               <button onClick={() => handleDelete(m.id)} className="text-gray-600 hover:text-red-400 opacity-0 group-hover:opacity-100 transition">
                 <Trash2 className="w-4 h-4" />

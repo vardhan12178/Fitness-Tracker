@@ -12,8 +12,8 @@ export default function SignupPage() {
   }, [router]);
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#030712]">
-      <div className="text-gray-400">Redirecting to sign in...</div>
+    <main className="min-h-screen flex items-center justify-center bg-background">
+      <div className="text-muted">Redirecting to sign in...</div>
     </main>
   );
 }

@@ -239,10 +239,10 @@ export default function DashboardPage() {
     const dateSteps = stepsLogs.filter((s) => s.date === date);
     const latestSteps = dateSteps.length
       ? [...dateSteps].sort((a, b) => {
-          const aTime = a.createdAt?.toMillis ? a.createdAt.toMillis() : 0;
-          const bTime = b.createdAt?.toMillis ? b.createdAt.toMillis() : 0;
-          return bTime - aTime;
-        })[0]
+        const aTime = a.createdAt?.toMillis ? a.createdAt.toMillis() : 0;
+        const bTime = b.createdAt?.toMillis ? b.createdAt.toMillis() : 0;
+        return bTime - aTime;
+      })[0]
       : undefined;
     const firstWorkout = workouts.find((w) => w.date === date);
 
@@ -447,15 +447,15 @@ export default function DashboardPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold">
-            Welcome back, <span className="text-orange-500">{user.name.split(' ')[0]}</span>
+          <h1 className="text-3xl md:text-5xl font-black tracking-tighter drop-shadow-md">
+            Welcome back, <span className="text-gradient">{user.name.split(' ')[0]}</span>
           </h1>
-          <p className="text-gray-400 mt-1">{dayjs().format('dddd, MMMM D, YYYY')}</p>
+          <p className="text-muted mt-1">{dayjs().format('dddd, MMMM D, YYYY')}</p>
         </div>
         {goal && (
-          <div className="flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-lg">
-            <Target className="w-4 h-4 text-orange-500" />
-            <span className="text-sm text-orange-400 font-medium">
+          <div className="flex items-center gap-2 px-4 py-2 bg-gradient-sunset/10 border border-orange-500/30 rounded-xl backdrop-blur-md shadow-lg shadow-orange-500/10">
+            <Target className="w-5 h-5 text-orange-500" />
+            <span className="text-sm text-orange-500 font-bold tracking-tight">
               {formatGoalType(goal.goalType)} &middot; {goal.currentWeight}kg → {goal.targetWeight}kg
             </span>
           </div>
@@ -469,22 +469,21 @@ export default function DashboardPage() {
               {statusScore >= 3 ? <CheckCircle2 className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4" />}
               {statusLabel}
             </div>
-            <p className="text-sm text-gray-400">Daily completion: <span className="text-white font-semibold">{completedCount}/4</span> (Meals, Workout, Sleep, Steps)</p>
-            <p className="text-xs text-gray-500">{statusReasonText}</p>
-            {streak > 0 && <p className="text-sm text-orange-400">🔥 {streak}-day consistency streak</p>}
+            <p className="text-sm text-muted">Daily completion: <span className="text-white font-semibold">{completedCount}/4</span> (Meals, Workout, Sleep, Steps)</p>
+            <p className="text-xs text-muted/70">{statusReasonText}</p>
+            {streak > 0 && <p className="text-sm text-accent-hover">🔥 {streak}-day consistency streak</p>}
             {missingMealDays >= 2 && <p className="text-xs text-yellow-400">You missed meal logs for {missingMealDays} of last 3 days.</p>}
             {missingSleepDays >= 2 && <p className="text-xs text-yellow-400">You missed sleep logs for {missingSleepDays} of last 3 days.</p>}
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <div className="bg-[#030712] border border-gray-800 rounded-lg p-1 flex">
+          <div className="flex flex-wrap lg:flex-nowrap gap-4 w-full lg:w-auto items-center">
+            <div className="bg-white/5 border border-white/5 backdrop-blur-md rounded-xl p-1 flex shadow-inner w-full sm:w-auto">
               {(['today', 'yesterday', 'week'] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setViewTab(tab)}
-                  className={`px-3 py-1.5 text-xs rounded-md capitalize transition ${
-                    viewTab === tab ? 'bg-orange-500 text-white' : 'text-gray-400 hover:text-white'
-                  }`}
+                  className={`flex-1 sm:flex-none px-4 py-2 text-xs rounded-lg capitalize transition-all font-bold tracking-wide ${viewTab === tab ? 'bg-gradient-sunset text-white shadow-md scale-100' : 'text-white/50 hover:text-white hover:bg-white/5 scale-95 hover:scale-100'
+                    }`}
                 >
                   {tab === 'week' ? 'This Week' : tab}
                 </button>
@@ -492,7 +491,7 @@ export default function DashboardPage() {
             </div>
             <button
               onClick={() => setShowCheckIn(true)}
-              className="px-4 py-2 text-sm bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition"
+              className="w-full sm:w-auto px-6 py-2.5 text-sm bg-gradient-sunset hover:bg-gradient-sunset-hover text-white rounded-xl font-bold transition-all shadow-lg shadow-orange-500/40 hover:shadow-xl shadow-orange-500/60 hover:scale-105"
             >
               {viewTab === 'today' ? "Complete Today's Check-In" : viewTab === 'yesterday' ? "Update Yesterday's Check-In" : 'Open Daily Check-In'}
             </button>
@@ -505,12 +504,12 @@ export default function DashboardPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <Card className="!p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center">
-                <Flame className="w-5 h-5 text-orange-500" />
+              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+                <Flame className="w-5 h-5 text-accent" />
               </div>
               <div>
-                <p className="text-xs text-gray-400">Daily Calories</p>
-                <p className="text-lg font-bold">{goalMetrics.dailyCalories} <span className="text-xs text-gray-500 font-normal">kcal</span></p>
+                <p className="text-xs text-muted">Daily Calories</p>
+                <p className="text-lg font-bold">{goalMetrics.dailyCalories} <span className="text-xs text-muted/70 font-normal">kcal</span></p>
               </div>
             </div>
           </Card>
@@ -520,8 +519,8 @@ export default function DashboardPage() {
                 <TrendingUp className="w-5 h-5 text-green-500" />
               </div>
               <div>
-                <p className="text-xs text-gray-400">Protein Target</p>
-                <p className="text-lg font-bold">{goalMetrics.proteinGrams}<span className="text-xs text-gray-500 font-normal">g</span></p>
+                <p className="text-xs text-muted">Protein Target</p>
+                <p className="text-lg font-bold">{goalMetrics.proteinGrams}<span className="text-xs text-muted/70 font-normal">g</span></p>
               </div>
             </div>
           </Card>
@@ -531,8 +530,8 @@ export default function DashboardPage() {
                 <Footprints className="w-5 h-5 text-indigo-500" />
               </div>
               <div>
-                <p className="text-xs text-gray-400">Steps Today</p>
-                <p className="text-lg font-bold">{stepsTaken.toLocaleString()} <span className="text-xs text-gray-500 font-normal">/ {stepGoal.toLocaleString()}</span></p>
+                <p className="text-xs text-muted">Steps Today</p>
+                <p className="text-lg font-bold">{stepsTaken.toLocaleString()} <span className="text-xs text-muted/70 font-normal">/ {stepGoal.toLocaleString()}</span></p>
               </div>
             </div>
           </Card>
@@ -542,7 +541,7 @@ export default function DashboardPage() {
                 <Dumbbell className="w-5 h-5 text-cyan-500" />
               </div>
               <div>
-                <p className="text-xs text-gray-400">Workouts Logged</p>
+                <p className="text-xs text-muted">Workouts Logged</p>
                 <p className="text-lg font-bold">{filteredWorkouts.length}</p>
               </div>
             </div>
@@ -560,12 +559,12 @@ export default function DashboardPage() {
           <Card>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold flex items-center gap-2">
-                <Dumbbell className="w-5 h-5 text-orange-500" />
+                <Dumbbell className="w-5 h-5 text-accent" />
                 Workouts
               </h2>
               <button
                 onClick={() => setShowWorkoutForm(!showWorkoutForm)}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-accent hover:bg-orange-600 text-white rounded-lg transition"
               >
                 <Plus className="w-4 h-4" />
                 Quick Add
@@ -573,41 +572,41 @@ export default function DashboardPage() {
             </div>
 
             {showWorkoutForm && (
-              <form onSubmit={handleAddWorkout} className="space-y-3 mb-4 pb-4 border-b border-gray-800">
+              <form onSubmit={handleAddWorkout} className="space-y-3 mb-4 pb-4 border-b border-white/5">
                 <input
                   type="text"
                   placeholder="Exercise name"
                   value={exercise}
                   onChange={(e) => setExercise(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm"
+                  className="w-full px-4 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm"
                   required
                 />
                 <div className="grid grid-cols-3 gap-3">
-                  <input type="number" placeholder="Sets" value={sets} onChange={(e) => setSets(e.target.value)} className="px-3 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm" required min="1" />
-                  <input type="number" placeholder="Reps" value={reps} onChange={(e) => setReps(e.target.value)} className="px-3 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm" required min="1" />
-                  <input type="number" placeholder="Weight (kg)" value={weight} onChange={(e) => setWeight(e.target.value)} className="px-3 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm" required min="0" />
+                  <input type="number" placeholder="Sets" value={sets} onChange={(e) => setSets(e.target.value)} className="px-3 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm" required min="1" />
+                  <input type="number" placeholder="Reps" value={reps} onChange={(e) => setReps(e.target.value)} className="px-3 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm" required min="1" />
+                  <input type="number" placeholder="Weight (kg)" value={weight} onChange={(e) => setWeight(e.target.value)} className="px-3 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm" required min="0" />
                 </div>
-                <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2.5 rounded-lg font-medium text-sm transition">
+                <button className="w-full bg-accent hover:bg-orange-600 text-white py-2.5 rounded-lg font-medium text-sm transition">
                   Log Workout
                 </button>
               </form>
             )}
 
             {filteredWorkouts.length === 0 ? (
-              <p className="text-gray-500 text-sm text-center py-8">No workouts logged yet. Tap &quot;Add&quot; to start.</p>
+              <p className="text-muted/70 text-sm text-center py-8">No workouts logged yet. Tap &quot;Add&quot; to start.</p>
             ) : (
               <div className="space-y-2 max-h-72 overflow-y-auto">
                 {[...filteredWorkouts].reverse().map((w) => (
                   <div
                     key={w.id}
-                    className="flex items-center justify-between px-4 py-3 bg-[#030712] rounded-lg group"
+                    className="flex items-center justify-between px-4 py-3 bg-black/40 backdrop-blur-sm shadow-inner rounded-lg group"
                   >
                     <div>
                       <p className="text-sm font-medium">{w.exercise}</p>
                       {w.workoutType === 'bodyweight' ? (
-                        <p className="text-xs text-gray-500">{w.sets}×{w.reps} bodyweight {w.workoutIntensity ? `· ${w.workoutIntensity}` : ''}</p>
+                        <p className="text-xs text-muted/70">{w.sets}×{w.reps} bodyweight {w.workoutIntensity ? `· ${w.workoutIntensity}` : ''}</p>
                       ) : (
-                        <p className="text-xs text-gray-500">{w.sets}×{w.reps} @ {w.weight}kg &middot; Vol: {w.sets * w.reps * w.weight}kg</p>
+                        <p className="text-xs text-muted/70">{w.sets}×{w.reps} @ {w.weight}kg &middot; Vol: {w.sets * w.reps * w.weight}kg</p>
                       )}
                     </div>
                     <button
@@ -632,16 +631,16 @@ export default function DashboardPage() {
             {/* Step progress bar */}
             <div className="mb-4">
               <div className="flex justify-between text-sm mb-1.5">
-                <span className="text-gray-400">{stepsTaken.toLocaleString()} steps</span>
-                <span className="text-gray-500">Goal: {stepGoal.toLocaleString()}</span>
+                <span className="text-muted">{stepsTaken.toLocaleString()} steps</span>
+                <span className="text-muted/70">Goal: {stepGoal.toLocaleString()}</span>
               </div>
-              <div className="w-full h-3 bg-gray-800 rounded-full overflow-hidden">
+              <div className="w-full h-3 bg-white\/5 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full transition-all duration-500"
                   style={{ width: `${stepsPercent}%` }}
                 />
               </div>
-              <p className="text-xs text-gray-500 mt-1.5">{Math.round(stepsPercent)}% complete</p>
+              <p className="text-xs text-muted/70 mt-1.5">{Math.round(stepsPercent)}% complete</p>
             </div>
 
             <form onSubmit={handleAddSteps} className="flex gap-2">
@@ -650,7 +649,7 @@ export default function DashboardPage() {
                 placeholder="Add steps..."
                 value={stepsInput}
                 onChange={(e) => setStepsInput(e.target.value)}
-                className="flex-1 px-4 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm"
+                className="flex-1 px-4 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm"
                 required
                 min="1"
               />
@@ -660,7 +659,7 @@ export default function DashboardPage() {
             </form>
 
             <div className="mt-3 flex gap-2">
-              <label className="text-xs text-gray-500 self-center">Daily goal:</label>
+              <label className="text-xs text-muted/70 self-center">Daily goal:</label>
               <input
                 type="number"
                 value={stepGoal}
@@ -669,7 +668,7 @@ export default function DashboardPage() {
                   setStepGoal(g);
                   saveSteps(stepsTaken, g);
                 }}
-                className="w-24 px-3 py-1.5 bg-[#030712] border border-gray-700 rounded-lg text-white text-xs"
+                className="w-24 px-3 py-1.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white text-xs"
                 min="1000"
                 step="1000"
               />

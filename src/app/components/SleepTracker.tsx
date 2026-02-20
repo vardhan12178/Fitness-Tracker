@@ -117,14 +117,14 @@ export default function SleepTracker() {
           type="date"
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
-          className="flex-1 px-3 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white text-sm"
+          className="flex-1 px-3 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white text-sm"
         />
         <input
           type="number"
           placeholder="Hours"
           value={hours}
           onChange={(e) => setHours(e.target.value)}
-          className="w-20 px-3 py-2.5 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 text-sm"
+          className="w-20 px-3 py-2.5 bg-black/40 backdrop-blur-sm shadow-inner border border-white/10 rounded-lg text-white placeholder-gray-500 text-sm"
           required
           min="0"
           max="24"
@@ -137,13 +137,13 @@ export default function SleepTracker() {
 
       {/* Stats */}
       <div className="flex gap-4 mb-4">
-        <div className="flex-1 bg-[#030712] rounded-lg p-3 text-center">
-          <p className="text-xs text-gray-500">Selected Day</p>
-          <p className="text-lg font-bold">{selectedLog?.hours || 0}<span className="text-xs text-gray-500 font-normal"> hrs</span></p>
+        <div className="flex-1 bg-black/40 backdrop-blur-sm shadow-inner rounded-lg p-3 text-center">
+          <p className="text-xs text-muted/70">Selected Day</p>
+          <p className="text-lg font-bold">{selectedLog?.hours || 0}<span className="text-xs text-muted/70 font-normal"> hrs</span></p>
         </div>
-        <div className="flex-1 bg-[#030712] rounded-lg p-3 text-center">
-          <p className="text-xs text-gray-500">7-Day Avg</p>
-          <p className="text-lg font-bold">{avgSleep}<span className="text-xs text-gray-500 font-normal"> hrs</span></p>
+        <div className="flex-1 bg-black/40 backdrop-blur-sm shadow-inner rounded-lg p-3 text-center">
+          <p className="text-xs text-muted/70">7-Day Avg</p>
+          <p className="text-lg font-bold">{avgSleep}<span className="text-xs text-muted/70 font-normal"> hrs</span></p>
         </div>
       </div>
 
@@ -179,12 +179,12 @@ export default function SleepTracker() {
       {/* Recent logs */}
       {daysWithData.length > 0 && (
         <div className="mt-4 space-y-1.5">
-          <p className="text-xs text-gray-500 uppercase tracking-wider">Recent Logs</p>
+          <p className="text-xs text-muted/70 uppercase tracking-wider">Recent Logs</p>
           {last7.filter(d => d.hours > 0).reverse().slice(0, 3).map((d) => {
             const log = logs.find((l) => l.date === d.fullDate);
             return (
-              <div key={d.fullDate} className="flex items-center justify-between px-3 py-2 bg-[#030712] rounded-lg text-sm group">
-                <span className="text-gray-400">{dayjs(d.fullDate).format('MMM D')} — <span className="text-white font-medium">{d.hours} hrs</span></span>
+              <div key={d.fullDate} className="flex items-center justify-between px-3 py-2 bg-black/40 backdrop-blur-sm shadow-inner rounded-lg text-sm group">
+                <span className="text-muted">{dayjs(d.fullDate).format('MMM D')} — <span className="text-white font-medium">{d.hours} hrs</span></span>
                 {log && (
                   <button onClick={() => handleDelete(log.id)} className="text-gray-600 hover:text-red-400 opacity-0 group-hover:opacity-100 transition">
                     <Trash2 className="w-3.5 h-3.5" />

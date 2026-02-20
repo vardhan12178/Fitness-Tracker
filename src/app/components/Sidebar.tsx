@@ -48,78 +48,87 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="hidden lg:flex w-64 h-screen bg-[#111827] border-r border-gray-800 fixed left-0 top-0 z-40 flex-col">
-      {/* Logo */}
-      <div className="px-6 py-5 border-b border-gray-800">
-        <Link href="/dashboard" className="text-xl font-bold text-white">
-          <span className="text-orange-500">Fit</span>Track
-        </Link>
-      </div>
-
-      {/* Navigation */}
-      <nav className="flex-1 px-3 py-4 space-y-1">
-        {navItems.map((item) => {
-          const isActive = pathname === item.href;
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition ${
-                isActive
-                  ? 'bg-orange-500/10 text-orange-500 border border-orange-500/20'
-                  : 'text-gray-400 hover:text-white hover:bg-gray-800'
-              }`}
-            >
-              <item.icon className="w-5 h-5" />
-              {item.label}
+    <>
+      <aside className="hidden lg:flex w-72 flex-shrink-0 h-screen sticky top-0 overflow-y-auto z-40 flex-col p-4 gap-0">
+        {/* Inner glass panel */}
+        <div className="glass-panel flex flex-col flex-1 overflow-hidden">
+          {/* Logo */}
+          <div className="px-6 py-6 border-b border-white/5">
+            <Link href="/dashboard" className="text-2xl font-black text-white tracking-tighter flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-gradient-sunset flex items-center justify-center shadow-lg shadow-orange-500/40">
+                <LayoutDashboard className="w-4 h-4 text-white" />
+              </div>
+              FitTrack
             </Link>
-          );
-        })}
+          </div>
 
-        <button
-          onClick={() => setShowReset(true)}
-          className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-gray-800 transition w-full"
-        >
-          <RotateCcw className="w-5 h-5" />
-          Reset Data
-        </button>
-      </nav>
+          {/* Navigation */}
+          <nav className="flex-1 px-3 py-4 space-y-1">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-300 ${isActive
+                    ? 'bg-gradient-sunset text-white font-bold shadow-lg shadow-orange-500/25 scale-[1.02]'
+                    : 'text-muted hover:text-white hover:bg-white/5 font-medium border border-transparent hover:border-white/5'
+                    }`}
+                >
+                  <item.icon className="w-5 h-5" />
+                  {item.label}
+                </Link>
+              );
+            })}
 
+            <button
+              onClick={() => setShowReset(true)}
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-muted hover:text-white hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-300 w-full mt-2"
+            >
+              <RotateCcw className="w-5 h-5" />
+              Reset Data
+            </button>
+          </nav>
+
+
+
+          <div className="px-3 py-4 border-t border-white/5">
+            {user && (
+              <div className="flex items-center gap-3 px-4 py-2 mb-2">
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt={user.name}
+                    className="w-8 h-8 rounded-full border border-white/10"
+                  />
+                ) : (
+                  <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-accent text-sm font-bold">
+                    {user.name.charAt(0).toUpperCase()}
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-bold text-white truncate">{user.name}</p>
+                  <p className="text-xs text-white/50 truncate font-medium">{user.email}</p>
+                </div>
+              </div>
+            )}
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-muted hover:text-red-400 hover:bg-red-500/10 transition-all duration-300 w-full"
+            >
+              <LogOut className="w-5 h-5" />
+              Sign Out
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      {/* Render modal outside aside to avoid backdrop-filter stacking context */}
       <ConfirmResetModal
         open={showReset}
         isBusy={isResetting}
         onConfirm={handleReset}
         onCancel={() => setShowReset(false)}
       />
-
-      <div className="px-3 py-4 border-t border-gray-800">
-        {user && (
-          <div className="flex items-center gap-3 px-4 py-2 mb-2">
-            {user.photoURL ? (
-              <img 
-                src={user.photoURL} 
-                alt={user.name}
-                className="w-8 h-8 rounded-full"
-              />
-            ) : (
-              <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 text-sm font-bold">
-                {user.name.charAt(0).toUpperCase()}
-              </div>
-            )}
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-white truncate">{user.name}</p>
-              <p className="text-xs text-gray-500 truncate">{user.email}</p>
-            </div>
-          </div>
-        )}
-        <button
-          onClick={handleLogout}
-          className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition w-full"
-        >
-          <LogOut className="w-5 h-5" />
-          Sign Out
-        </button>
-      </div>
-    </aside>
-  );
+    </>);
 }

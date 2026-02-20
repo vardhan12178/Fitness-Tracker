@@ -96,25 +96,25 @@ export default function GoalSetupPage() {
     <div className="max-w-2xl mx-auto">
       <div className="w-full">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-orange-500/10 mb-4">
-            <Target className="w-7 h-7 text-orange-500" />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-accent/10 mb-4">
+            <Target className="w-7 h-7 text-accent" />
           </div>
           <h1 className="text-2xl font-bold text-white">
             {goal ? 'Update Your Goal' : 'Set Your Fitness Goal'}
           </h1>
-          <p className="text-gray-400 mt-2">
+          <p className="text-muted mt-2">
             We&apos;ll calculate personalized daily targets based on your goal.
           </p>
         </div>
 
-        <div className="bg-[#111827] border border-gray-800 rounded-2xl p-8">
+        <div className="bg-card border border-white/5 rounded-2xl p-8">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-1.5">Goal Type</label>
               <select
                 value={goalType}
                 onChange={(e) => setGoalType(e.target.value)}
-                className="w-full px-4 py-3 bg-[#030712] border border-gray-700 rounded-lg text-white focus:border-orange-500"
+                className="w-full px-4 py-3 bg-background border border-white/10 rounded-lg text-white focus:border-orange-500"
                 required
               >
                 <option value="">Select your goal</option>
@@ -133,10 +133,10 @@ export default function GoalSetupPage() {
                     placeholder="e.g. 75"
                     value={currentWeight}
                     onChange={(e) => setCurrentWeight(e.target.value)}
-                    className="w-full px-4 py-3 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-orange-500 pr-10"
+                    className="w-full px-4 py-3 bg-background border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-orange-500 pr-10"
                     required
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">kg</span>
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted/70 text-sm">kg</span>
                 </div>
               </div>
               <div>
@@ -147,10 +147,10 @@ export default function GoalSetupPage() {
                     placeholder="e.g. 68"
                     value={targetWeight}
                     onChange={(e) => setTargetWeight(e.target.value)}
-                    className="w-full px-4 py-3 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-orange-500 pr-10"
+                    className="w-full px-4 py-3 bg-background border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-orange-500 pr-10"
                     required
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">kg</span>
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted/70 text-sm">kg</span>
                 </div>
               </div>
             </div>
@@ -163,10 +163,10 @@ export default function GoalSetupPage() {
                   placeholder="e.g. 90"
                   value={timeframe}
                   onChange={(e) => setTimeframe(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#030712] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-orange-500 pr-14"
+                  className="w-full px-4 py-3 bg-background border border-white/10 rounded-lg text-white placeholder-gray-500 focus:border-orange-500 pr-14"
                   required
                 />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">days</span>
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted/70 text-sm">days</span>
               </div>
             </div>
 
@@ -178,7 +178,7 @@ export default function GoalSetupPage() {
 
             <button
               type="submit"
-              className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2"
+              className="w-full bg-accent hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2"
             >
               {goal ? 'Update Goal' : 'Set Goal & Start Tracking'}
               <ArrowRight className="w-4 h-4" />
@@ -188,7 +188,7 @@ export default function GoalSetupPage() {
 
         {user && goal && (
           <p className="text-center mt-4">
-            <Link href="/dashboard" className="text-sm text-gray-500 hover:text-gray-300 transition">
+            <Link href="/dashboard" className="text-sm text-muted/70 hover:text-gray-300 transition">
               Back to Dashboard
             </Link>
           </p>
